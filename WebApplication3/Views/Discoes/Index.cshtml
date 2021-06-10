@@ -1,0 +1,96 @@
+﻿@model IEnumerable<WebApplication3.Models.Disco>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using (Html.BeginForm("Index", "Discoes", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-group">
+        <label class="control-label col-md-2">Clientes</label>
+        <div class="col-md-10">
+            @Html.DropDownList("Idcliente", null, htmlAttributes: new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Filtar titulos" class="btn btn-default" />
+        </div>
+    </div>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Artista.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Categoria.Ccategoria)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Titulo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Formato)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Numerocanciones)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Precio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Observaciones)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Imagen)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Artista.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Categoria.Ccategoria)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Formato)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Numerocanciones)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Precio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Observaciones)
+            </td>
+            <td>
+                <img src="@item.Imagen" style="width:80px; height:50px" />
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Iddiscos }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Iddiscos }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Iddiscos })
+            </td>
+        </tr>
+    }
+
+</table>

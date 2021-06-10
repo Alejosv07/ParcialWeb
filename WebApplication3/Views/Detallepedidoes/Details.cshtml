@@ -1,0 +1,50 @@
+﻿@model WebApplication3.Models.Detallepedido
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Detallepedido</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Disco.Titulo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Disco.Titulo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pedido.Direccionentrega)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pedido.Direccionentrega)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cantidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cantidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Precioventa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Precioventa)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Iddetalle }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
