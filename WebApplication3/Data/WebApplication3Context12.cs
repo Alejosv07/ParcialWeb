@@ -32,5 +32,7 @@ namespace WebApplication3.Data
         public System.Data.Entity.DbSet<WebApplication3.Models.Pedido> Pedidoes { get; set; }
 
         public System.Data.Entity.DbSet<WebApplication3.Models.Detallepedido> Detallepedidoes { get; set; }
+
+        public System.Data.Entity.DbSet<WebApplication3.Models.Cancion> Cancions { get; set; }
     }
 }

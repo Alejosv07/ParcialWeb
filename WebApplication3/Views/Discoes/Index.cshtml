@@ -11,6 +11,7 @@
 </p>
 @using (Html.BeginForm("Index", "Discoes", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
+    @Html.AntiForgeryToken()
     <div class="form-group">
         <label class="control-label col-md-2">Clientes</label>
         <div class="col-md-10">

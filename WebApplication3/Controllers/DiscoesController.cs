@@ -28,13 +28,35 @@ namespace WebApplication3.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Index([Bind(Include = "Idcliente")] int Idcliente)
         {
-            //var discoes = db.Discoes.Include(d => d.Artista).Include(d => d.Categoria);
-            var discoes = db.Discoes.Include(d => d.Artista).Include(d => d.Categoria).Join(db.Detallepedidoes, dis => dis.Iddiscos,
-                dp => dp.Iddiscos, (dis,dp) => new { dis, dp }).Join(db.Pedidoes, dpN => dpN.dp.Idpedido, pe => pe.Idpedido,
-                (dpN,pe) => new { dpN, pe }).Join(db.Clientes, ped => ped.pe.Idcliente, clien => clien.Idcliente,
-                (ped, clien) => new { ped, clien }).Where(dis=> dis.clien.Idcliente == 1);
+            var discos3 = (from _discos in db.Discoes
+                           join _detallePedido in db.Detallepedidoes on
+                           _discos.Iddiscos equals _detallePedido.Iddiscos
+                           join _pedido in db.Pedidoes on _detallePedido.Idpedido equals _pedido.Idpedido
+                           join _cliente in db.Clientes on _pedido.Idcliente equals _cliente.Idcliente
+                           join _artista in db.Artistas on _discos.Idartista equals _artista.Idartista
+                           join _categoria in db.Categorias on _discos.Idcategoria equals _categoria.Idcategoria
+                           where _cliente.Idcliente == Idcliente
+                           select new { _discos }).ToList();
             ViewBag.Idcliente = new SelectList(db.Clientes, "Idcliente", "Nombres");
-            return View(discoes.ToList());
+            List<Disco> alReturn = new List<Disco>();
+
+            foreach (var item in discos3)
+            {
+                Disco disco = new Disco();
+                disco.Idartista = item._discos.Idartista;
+                disco.Artista = db.Artistas.Find(disco.Idartista);
+                disco.Idcategoria = item._discos.Idcategoria;
+                disco.Categoria = db.Categorias.Find(disco.Idcategoria);
+                disco.Titulo = item._discos.Titulo;
+                disco.Fecha = item._discos.Fecha;
+                disco.Formato = item._discos.Formato;
+                disco.Numerocanciones = item._discos.Numerocanciones;
+                disco.Precio = item._discos.Precio;
+                disco.Observaciones = item._discos.Observaciones;
+                disco.Imagen = item._discos.Imagen;
+                alReturn.Add(disco);
+            }
+            return View(alReturn);
         }
 
 

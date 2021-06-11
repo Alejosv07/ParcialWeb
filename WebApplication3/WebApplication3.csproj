@@ -127,6 +127,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ArtistasController.cs" />
+    <Compile Include="Controllers\CancionsController.cs" />
     <Compile Include="Controllers\CategoriasController.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\DetallepedidoesController.cs" />
@@ -221,6 +222,11 @@
     <Content Include="Views\Detallepedidoes\Edit.cshtml" />
     <Content Include="Views\Detallepedidoes\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Cancions\Create.cshtml" />
+    <Content Include="Views\Cancions\Delete.cshtml" />
+    <Content Include="Views\Cancions\Details.cshtml" />
+    <Content Include="Views\Cancions\Edit.cshtml" />
+    <Content Include="Views\Cancions\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

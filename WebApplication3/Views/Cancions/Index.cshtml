@@ -1,0 +1,51 @@
+﻿@model IEnumerable<WebApplication3.Models.Cancion>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Iddisco)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Numero)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tiempo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cancionn)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Iddisco)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Numero)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tiempo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cancionn)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Idcancion }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Idcancion }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Idcancion })
+        </td>
+    </tr>
+}
+
+</table>
